@@ -1,13 +1,3 @@
-/**
- * @file std_o.cpp
- * @author your name (you@domain.com)
- * @brief Реалтизация работы со стондартным вводом
- * @version 0.1
- * @date 2026-09-22
- * 
- * @copyright Copyright (c) 2026
- * 
- */
 #include "std_o.h"
 #include <cstddef>
 #include <iostream>

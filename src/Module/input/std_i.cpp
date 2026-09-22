@@ -1,20 +1,10 @@
-/**
- * @file std_i.cpp
- * @author your name (you@domain.com)
- * @brief Реалтизация работы со стондартным вводом
- * @version 0.1
- * @date 2026-09-22
- * 
- * @copyright Copyright (c) 2026
- * 
- */
 #include "std_i.h"
 
 
 bool std_i::get_data(std::array<double, stream_over_flag::arr_len> &to_get,
-                      size_t &elem_was_added) {
+                      size_t &elem_was_added) noexcept {
   elem_was_added = 0;
-  while (elem_was_added < arr_len && std::cin >> to_get[elem_was_added]) {
+  while (elem_was_added < arr_len && std::cin >> to_get[elem_was_added])  {
     ++elem_was_added;
   }
 

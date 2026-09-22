@@ -1,28 +1,17 @@
 #ifndef TEST_PROJ_H
 #define TEST_PROJ_H
 
-
 #include "./Module/input/std_i.h"
 #include "./Module/input/file_i.h"
+#include "Module/output/std_o.h"
 #include "./Module/output/file_o.h"
+#include <cstddef>
 #include <iostream>
 #include <string>
-#include <string_view>
 #include <CLI/CLI.hpp>
-#include <fstream> 
-#include <algorithm>
-
 #include <cctype>
-
 #include <cstdio>
-#include <assert.h>
-
-#include <iostream>
-#include <istream>
-#include <iterator>
-#include <nlohmann/json.hpp>
-#include <ostream>
-
+#include <cassert>
 #include <string>
 
 
@@ -31,7 +20,6 @@
  */
 enum class io_type{
   std,
-  json,
   file
 };
 
@@ -39,19 +27,12 @@ enum class io_type{
  * @brief для парсинга параметров
  */
 struct input_param {
-  std::string input;
-  std::string output;
-  io_type out_type;
+  std::string input;  //!< имя файла для считывания 
+  std::string output; //!< имя файла для записи
+  io_type out_type;   
   io_type in_type;
 };
 
-/**
- * @brief Get the string object читайет поток до EOF 
- *  
- * @param in_stream поток из которого читаем
- * @return std::string прочитанные данные.
- */
-std::string get_string(std::istream &in_stream);
 
 /**
  * @brief парсинг параметров процесса

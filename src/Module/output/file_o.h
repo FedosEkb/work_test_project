@@ -1,3 +1,13 @@
+/**
+ * @file file_o.h
+ * @author Baranov (you@domain.com)
+ * @brief Наследник для работы c файлом
+ * @version 0.1
+ * @date 2026-09-22
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef FILE_O_H
 #define FILE_O_H
 
@@ -8,11 +18,10 @@
 #include <stdexcept>
 #include <cerrno>
 #include <cstring>
-#include <cstddef>
 #include <string>
 
 /**
- * @brief Наследник для работы со стандартным потоком вывода
+ * @brief Наследник для работы с файлом
  * 
  */
 class file_o final: public i_base_output
@@ -20,7 +29,16 @@ class file_o final: public i_base_output
     std::ofstream stream_;
 public:
     bool set_data(const std::array<double, stream_over_flag::arr_len>& to_set, size_t elem_to_print) override;
-    file_o(const std::string& file_name);
+
+    /**
+     * @brief Конструктор для работы с файлом
+     *
+     * @param file_name имя открываемого файла
+     *
+     * @throws std::runtime_error Если файл не удалось открыть. Сообщение
+     *                            содержит имя файла и системную ошибку (errno).
+     */
+    explicit file_o(const std::string& file_name);
     ~file_o() = default;
 };
 
