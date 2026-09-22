@@ -1,6 +1,11 @@
 -include ./paths
 # From file 'paths': TOOLS
 
+# Переменные doxygen
+DOXYGEN       = doxygen
+DOXYFILE      = Doxyfile
+DOC_DIR       = doc
+
 # Автоматическое определение количества ядер в Linux
 ifeq ($(filter -j%,$(MAKEFLAGS)),)
     NUM_CORES := $(shell nproc)
@@ -91,6 +96,15 @@ $(BUILD_DIR)/%.o: %.asm
 # Инклуд файлов зависимостей
 -include $(OBJECTS:%.o=%.d)
 
+.PHONY: doc
+# Рецепт для генерации документации
+doc:
+	@which $(DOXYGEN) > /dev/null 2>&1 || (echo "Ошибка: $(DOXYGEN) не установлен. Установите его командой 'sudo apt install doxygen'" && exit 1)
+	@echo "Генерация документации Doxygen..."
+	@mkdir -p $(DOC_DIR)
+	$(DOXYGEN) $(DOXYFILE)
+	@echo "Документация успешно создана в директории $(DOC_DIR)/"
+
 # Рецепт для скачивания и установки зависимостей через apt
 .PHONY: install-deps
 install-deps:
@@ -100,7 +114,8 @@ install-deps:
 		nlohmann-json3-dev
 
 clean:
-	@echo "Clean build directories..."
+	@echo "Clean build and doc directories..."
 	@rm -rf Debug
 	@rm -rf Release
+	@rm -rf $(DOC_DIR)
 

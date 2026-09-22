@@ -24,6 +24,12 @@ class file_i final: public i_base_input
 {
     std::ifstream stream_; 
 public:
+    /**
+     * @brief Get the data object
+     * 
+     * @param to_get кнонтейнер для приема данных  
+     * @return всегда false
+     */
     bool get_data(std::array<double, stream_over_flag::arr_len>& to_get,  size_t & elem_was_added) noexcept override;
 
     /**

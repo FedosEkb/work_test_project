@@ -28,6 +28,15 @@ class file_o final: public i_base_output
 {
     std::ofstream stream_;
 public:
+
+    /**
+     * @brief Запись данных
+     * 
+     * @param to_set контейнер задля записи
+     * @param elem_to_print количество элементов для записи в контейнере
+     * @return true была произведена последняя запись 
+     * @return false запись не закончина
+     */
     bool set_data(const std::array<double, stream_over_flag::arr_len>& to_set, size_t elem_to_print) override;
 
     /**
