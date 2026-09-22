@@ -4,6 +4,7 @@
 
 #include "./Module/input/std_i.h"
 #include "./Module/input/file_i.h"
+#include "./Module/output/file_o.h"
 #include <iostream>
 #include <string>
 #include <string_view>

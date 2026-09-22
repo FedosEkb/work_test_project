@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
       input = std::make_unique<file_i>(param.input);
     break;
     default:
-      assert(false && "Параметры были обработаны некорректно.\n");
+      assert(false && "Параметры были обработаны некорректно.\n"); // NOTE тут проще перенаправлять потоки, ну пусть будет так для примера
       return 42;
   }
 
@@ -34,8 +34,11 @@ int main(int argc, char **argv) {
     case io_type::std:
       output = std::make_unique<std_o>();
     break;
+    case io_type::file:
+      output = std::make_unique<file_o>(param.output);
+    break;
     default:
-      assert(false && "Параметры были обработаны некорректно.\n");
+      assert(false && "Параметры были обработаны некорректно.\n"); // NOTE тут проще перенаправлять потоки, ну пусть будет так для примера
       return 43;
   }
 
