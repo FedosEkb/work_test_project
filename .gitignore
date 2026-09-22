@@ -1,0 +1,6 @@
+Debug/*
+Release/*
+*.txt
+paths
+spell_check.txt
+/*.json
